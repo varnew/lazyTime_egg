@@ -16,4 +16,5 @@ module.exports = app => {
   router.post('fundebug', '/fundebug', controller.fundebug.handleError);
   router.get('fundebug', '/fundebug/get', controller.fundebug.getError);
   router.get('fundebug', '/fundebug/getErrors', controller.fundebug.getErrors);
+  router.get('fundebug', '/fundebug/getErrorByTypeId', controller.fundebug.getErrorByTypeId);
 };

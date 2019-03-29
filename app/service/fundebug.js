@@ -8,7 +8,37 @@ class FundebugService extends Service {
    * @params: 错误信息体
   */
   async handleError() {
+    // 分析当前bug是否属于数据库已有类型中的一个
+    // 获取base表中的数据
+    // 比较
     const form = this.ctx.request.body;
+    const baseList = await this.getBaseList()
+    let error = null
+    baseList.map((item) => {
+      let isInBaseList = true
+      const same = {
+        url: 0,
+        name: 0,
+        stacktrace: 0,
+        type: 0,
+        target: 0
+      }
+      Object.keys(same).forEach((key, index) => {
+        if (form[key]) {
+          if (form[key] && item[key] && form[key].toString() != item[key].toString()) {
+            isInBaseList = false // 不符合
+          }
+        }
+      })
+      if (isInBaseList) {
+        error = item
+      }
+    })
+    if (error) { // 数据库已有类似的数据存在
+      form.typeId = error.typeId
+    } else {
+      form.typeId = Math.random()
+    }
     form.ip = this.getIp(this.ctx.request)
     form.metaData = JSON.stringify(form.metaData)
     form.breadcrumbId = form.performanceId = this.randomRangeId(20)
@@ -47,6 +77,24 @@ class FundebugService extends Service {
       };
     }
 
+  }
+  /**
+   * @author varnew
+   * @date 2019/3/17
+   * @desc: 获取base表进行对比
+   * @params:
+  */
+  async getBaseList() {
+    try {
+      // const errorList = await this.app.mysql.select('fundebug_base');
+      const errorList = await this.app.mysql.query(`select * from fundebug_base order by time`);
+      errorList.map((item) => {
+        item.target = JSON.parse(item.target)
+      })
+      return errorList
+    } catch (e) {
+      return { code: 500, message: '数据库错误' }
+    }
   }
   /**
    * @author varnew
@@ -118,6 +166,29 @@ class FundebugService extends Service {
       errorList.map((item) => {
         item.target = JSON.parse(item.target)
       })
+      return {
+        code: 200,
+        data: errorList,
+        message: '查询成功'
+      }
+    } catch (e) {
+      console.log(e)
+      return {
+        code: 500,
+        message: '数据库读取错误'
+      };
+    }
+
+  }/**
+   * @author varnew
+   * @date 2019/2/26
+   * @dest: 获取简单错误列表
+   * @params: page,size
+  */
+  async getErrorByTypeId() {
+    try {
+      // const errorList = await this.app.mysql.select('fundebug_base');
+      const errorList = await this.app.mysql.query(`select name,type,id,time from fundebug_base order by time desc`);
       return {
         code: 200,
         data: errorList,
