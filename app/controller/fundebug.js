@@ -19,6 +19,10 @@ class FundebugController extends Controller {
     const response = await this.ctx.service.fundebug.getErrorByTypeId()
     this.ctx.body = response
   }
+  async getCounts() {
+    const response = await this.ctx.service.fundebug.getCounts()
+    this.ctx.body = response
+  }
 }
 
 module.exports = FundebugController;

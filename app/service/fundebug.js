@@ -246,6 +246,37 @@ class FundebugService extends Service {
     }
     return ip;
   }
+  /**
+   * @author varnew
+   * @date 2019/4/2
+   * @desc: 统计各类型的条数
+  */
+  async getCounts () {
+    const data = {}
+    const count = {
+      js: 0,
+      http: 0,
+      source: 0
+    }
+    try {
+      count.js = await this.app.mysql.query(`SELECT count(*) FROM fundebug_base WHERE type != 'resourceError' && type != 'httpError'`);
+      count.http = await this.app.mysql.query(`SELECT count(*) FROM fundebug_base WHERE type = 'httpError'`);
+      count.source = await this.app.mysql.query(`SELECT count(*) FROM fundebug_base WHERE type = 'resourceError'`);
+      return {
+        code: 200,
+        data: {
+          js: count.js[0]['count(*)'],
+          http: count.http[0]['count(*)'],
+          source: count.source[0]['count(*)']
+        }
+      }
+    } catch (e) {
+      console.log(e)
+      data.code = 500
+      data.message = e.toString()
+      return data
+    }
+  }
 }
 
 module.exports = FundebugService;

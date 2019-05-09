@@ -6,7 +6,7 @@ module.exports = appInfo => {
   // 安全配置
   config.security = {
     csrf: {
-      enable: true,
+      enable: false,
       ignoreJSON: true, // 默认为 false，当设置为 true 时，将会放过所有 content-type 为 `application/json` 的请求
     },
     domainWhiteList: ['http://localhost:3001']
@@ -38,10 +38,15 @@ module.exports = appInfo => {
     // 是否加载到 agent 上，默认关闭
     agent: false,
     client: { // 配置
+      // host: '193.112.72.172',
+      // port: '3306',
+      // user: 'root',
+      // password: 'varnew19960101',
+      // database: 'template'
       host: '193.112.72.172',
       port: '3306',
       user: 'root',
-      password: 'varnew19960101',
+      password: '19960101',
       database: 'template'
     }
   }
