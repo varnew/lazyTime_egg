@@ -1,4 +1,9 @@
 const Service = require('egg').Service;
+const ErrorBase = require('../models/errorBaseModel');
+const ErrorBreadcrumbs = require('../models/errorBreadcrumbsModel');
+const ErrorPerformance = require('../models/errorPerformanceModel');
+const ErrorCompare = require('../models/errorCompareModel');
+const utils = require('../utils/utils')
 
 class FundebugService extends Service {
   /**
@@ -8,57 +13,16 @@ class FundebugService extends Service {
    * @params: 错误信息体
   */
   async handleError() {
-    // 分析当前bug是否属于数据库已有类型中的一个
-    // 获取base表中的数据
-    // 比较
     const form = this.ctx.request.body;
     const baseList = await this.getBaseList()
-    let error = null
-    baseList.map((item) => {
-      let isInBaseList = true
-      const same = {
-        url: 0,
-        name: 0,
-        stacktrace: 0,
-        type: 0,
-        target: 0
-      }
-      Object.keys(same).forEach((key, index) => {
-        if (form[key]) {
-          if (form[key] && item[key] && form[key].toString() != item[key].toString()) {
-            isInBaseList = false // 不符合
-          }
-        }
-      })
-      if (isInBaseList) {
-        error = item
-      }
-    })
-    if (error) { // 数据库已有类似的数据存在
-      form.typeId = error.typeId
-    } else {
-      form.typeId = Math.random()
-    }
-    form.ip = this.getIp(this.ctx.request)
-    form.metaData = JSON.stringify(form.metaData)
-    form.breadcrumbId = form.performanceId = this.randomRangeId(20)
-    form.redo = JSON.stringify(form.redo)
-    form.target = JSON.stringify(form.target)
-    const breadcrumbs = form.breadcrumbs
-    const performance = form.performance.navigation[0] || null
-    if (performance) {
-      performance.serverTiming = performance.serverTiming.toString()
-      performance.baseId = form.performanceId
-    }
-    breadcrumbs.map((item) => {
-      item.baseid = form.breadcrumbId
-      item.detail = JSON.stringify(item.detail)
-      item.page = JSON.stringify(item.page)
-    })
-    delete form.breadcrumbs
-    delete form.performance
+    const compare = new ErrorCompare()
+    form.typeId = compare[form.type](form, baseList) || utils.randomRangeId()
+    form.ip = this.ctx.service.common.getIp(this.ctx.request)
+    const baseInfo = new ErrorBase(form)
+    const breadcrumbs = this.buildBreadcrumbs(form.breadcrumbs, baseInfo.id)
+    const performance = form.performance.navigation[0] ? new ErrorPerformance(form.performance.navigation[0], baseInfo.id) : null
     try {
-      await this.app.mysql.insert('fundebug_base', form);
+      await this.app.mysql.insert('fundebug_base', baseInfo);
       for (let i = 0; i < breadcrumbs.length; i++) {
         await this.app.mysql.insert('fundebug_breadcrumbs', breadcrumbs[i]);
       }
@@ -73,7 +37,7 @@ class FundebugService extends Service {
       console.log(e)
       return {
         code: 500,
-        message: '数据库插入错误'
+        message: e
       };
     }
 
@@ -86,10 +50,10 @@ class FundebugService extends Service {
   */
   async getBaseList() {
     try {
-      // const errorList = await this.app.mysql.select('fundebug_base');
-      const errorList = await this.app.mysql.query(`select * from fundebug_base order by time`);
+      const errorList = await this.app.mysql.query(`select any_value(url), any_value(title), any_value(releaseStage), any_value(metaData), any_value(name), any_value(message), any_value(stacktrace), any_value(type), any_value(severity), any_value(target) from fundebug_base group by typeId;`);
       errorList.map((item) => {
-        item.target = JSON.parse(item.target)
+        item.target = item.target ? JSON.parse(item.target) : ''
+        item.metaData = item.metaData ? JSON.parse(item.metaData) : ''
       })
       return errorList
     } catch (e) {
@@ -103,14 +67,14 @@ class FundebugService extends Service {
    * @params: 错误信息id
   */
   async getError() {
-    const id = this.getQueryStringByName('id', this.ctx.request.req.url)
+    const id = utils.getQueryStringByName('id', this.ctx.request.req.url)
     try {
       const errorData = await this.app.mysql.get('fundebug_base', { id: id });
       let returnDate = {}
       if (errorData) {
-        errorData.metaData = JSON.parse(errorData.metaData)
-        errorData.redo = JSON.parse(errorData.redo)
-        errorData.target = JSON.parse(errorData.target)
+        errorData.metaData = errorData.metaData ? JSON.parse(errorData.metaData): ''
+        errorData.redo = errorData.redo ? JSON.parse(errorData.redo): ''
+        errorData.target = errorData.target ? JSON.parse(errorData.target): ''
         errorData.breadcrumbs = await this.app.mysql.select('fundebug_breadcrumbs', {
           where: {
             baseId: errorData.breadcrumbId
@@ -157,14 +121,14 @@ class FundebugService extends Service {
   */
   async getErrors() {
     const params = {
-      page: this.getQueryStringByName('page', this.ctx.request.req.url),
-      size: this.getQueryStringByName('size', this.ctx.request.req.url)
+      page: utils.getQueryStringByName('page', this.ctx.request.req.url),
+      size: utils.getQueryStringByName('size', this.ctx.request.req.url)
     }
     try {
       // const errorList = await this.app.mysql.select('fundebug_base');
       const errorList = await this.app.mysql.query(`select * from fundebug_base order by time desc limit ${(params.page - 1) * params.size},${params.size}`);
       errorList.map((item) => {
-        item.target = JSON.parse(item.target)
+        item.target = item.target ? JSON.parse(item.target): ''
       })
       return {
         code: 200,
@@ -179,7 +143,8 @@ class FundebugService extends Service {
       };
     }
 
-  }/**
+  }
+  /**
    * @author varnew
    * @date 2019/2/26
    * @dest: 获取简单错误列表
@@ -202,49 +167,6 @@ class FundebugService extends Service {
       };
     }
 
-  }
-  /**
-   * @author varnew
-   * @date 2019/2/25
-   * @dest: 生成id(唯一)
-   * @params: id长度
-  */
-  randomRangeId(num){
-    let id = ''
-    let charStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (var i = 0; i < num; i++) {
-      const index = Math.round(Math.random() * (charStr.length - 1));
-      id += charStr.substring(index,index + 1);
-    }
-    return id
-  }
-  /**
-   * @author varnew
-   * @date 2019/2/26
-   * @dest: 获取queryString参数
-   * @params: 参数名
-  */
-  getQueryStringByName (name, queryString) {
-    var result = queryString.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
-    if(result === null || result.length < 1){
-      return '';
-    }
-    return result[1];
-  }
-  /**
-   * @author varnew
-   * @date 2019/3/1
-   * @desc: 获取用户ip
-  */
-  getIp (req) {
-    let ip = req.headers['x-real-ip'] || // 判断是否有反向代理 IP
-             req.headers['x-forwarded-for'] || // 判断 connection 的远程 IP
-             req.socket.remoteAddress || // 判断后端的 socket 的 IP
-             '';
-    if (ip.split(',').length > 0) {
-      ip = ip.split(',')[0];
-    }
-    return ip;
   }
   /**
    * @author varnew
@@ -277,15 +199,27 @@ class FundebugService extends Service {
       return data
     }
   }
+  /**
+   * @author varnew
+   * @date 2019/5/11
+   * @desc: 生成用户行为对象
+   * @params1: （Array: 用户行为对象数组） breadcrumbs
+   * @params2: （String: 错误唯一id） baseId
+   * @return: (Array: 用户行为对象数组)
+   */
+  buildBreadcrumbs(list, baseId) {
+    const bdbList = []
+    list.map((item) => {
+      item.baseId = baseId
+      item = new ErrorBreadcrumbs(item)
+      bdbList.push(item)
+    })
+    return bdbList
+  }
 }
 
 module.exports = FundebugService;
 
 /*
 *@desc:逻辑处理器
-*@do:
-      1、接收来自控制器的参数
-      2、查询数据
-      3、返回数据
-*
 */
