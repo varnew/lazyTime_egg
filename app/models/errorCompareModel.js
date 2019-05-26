@@ -173,5 +173,26 @@ class ErrorCompare {
     const compare = this.initData(data, error)
     return this.compare(compare, errorList)
   }
+  /**
+   * @author varnew
+   * @date 2019/5/12
+   * @desc: notification错误比较函数
+   * @params1: (Object) error
+   * @params2: (Array) errorList
+   * @return: (Boolean | Null)
+   */
+  notification (error, errorList) {
+    const data = {
+      'url': '',
+      'title': '',
+      'name': '',
+      'message': '',
+      'stacktrace': '',
+      'type': '',
+      'severity': ''
+    }
+    const compare = this.initData(data, error)
+    return this.compare(compare, errorList)
+  }
 }
 module.exports = ErrorCompare;

@@ -77,7 +77,7 @@ class FundebugService extends Service {
         errorData.target = errorData.target ? JSON.parse(errorData.target): ''
         errorData.breadcrumbs = await this.app.mysql.select('fundebug_breadcrumbs', {
           where: {
-            baseId: errorData.breadcrumbId
+            baseId: errorData.id
           }
         })
         errorData.breadcrumbs.map((item) => {
@@ -125,7 +125,7 @@ class FundebugService extends Service {
       size: utils.getQueryStringByName('size', this.ctx.request.req.url)
     }
     try {
-      // const errorList = await this.app.mysql.select('fundebug_base');
+      const totalSize = await this.app.mysql.query('select count(*) as totalSize from fundebug_base')
       const errorList = await this.app.mysql.query(`select * from fundebug_base order by time desc limit ${(params.page - 1) * params.size},${params.size}`);
       errorList.map((item) => {
         item.target = item.target ? JSON.parse(item.target): ''
@@ -133,6 +133,7 @@ class FundebugService extends Service {
       return {
         code: 200,
         data: errorList,
+        totalSize: totalSize[0].totalSize,
         message: '查询成功'
       }
     } catch (e) {
@@ -151,9 +152,11 @@ class FundebugService extends Service {
    * @params: page,size
   */
   async getErrorByTypeId() {
+    const params = {
+      typeId: utils.getQueryStringByName('typeId', this.ctx.request.req.url)
+    }
     try {
-      // const errorList = await this.app.mysql.select('fundebug_base');
-      const errorList = await this.app.mysql.query(`select name,type,id,time from fundebug_base order by time desc`);
+      const errorList = await this.app.mysql.query(`SELECT * FROM fundebug_base WHERE typeId='${params.typeId}' order by time desc`);
       return {
         code: 200,
         data: errorList,
