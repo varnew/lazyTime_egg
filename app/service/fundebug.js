@@ -81,8 +81,8 @@ class FundebugService extends Service {
           }
         })
         errorData.breadcrumbs.map((item) => {
-          item.page = JSON.parse(item.page)
-          item.detail = JSON.parse(item.detail)
+          item.page = item.page && JSON.parse(item.page) || ''
+          item.detail = item.detail &&  JSON.parse(item.detail) || ''
         })
         const navigation = await this.app.mysql.select('fundebug_performance', {
           where: {
