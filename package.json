@@ -35,7 +35,7 @@
     "node": ">=8.9.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --port=7000 --workers=2 --title=egg-server-lazyTime_egg",
+    "start": "egg-scripts start --daemon --port=7001 --workers=2 --title=egg-server-lazyTime_egg",
     "stop": "egg-scripts stop --title=egg-server-lazyTime_egg",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
