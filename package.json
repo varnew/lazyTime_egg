@@ -4,6 +4,7 @@
   "description": "egg",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.19.0",
     "co-mocha": "^1.2.2",
     "egg": "^2.2.1",
     "egg-mysql": "^3.0.0",

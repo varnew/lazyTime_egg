@@ -7,7 +7,12 @@ class EmailService extends Service {
    * @date 2019/5/9
    * @dest: 发送邮件通知
    */
-  async sendEmail() {
+  async sendEmail(data) {
+    // data: {
+    //   to: ''
+    //   subject: '',
+    //   text: ''
+    // }
     const server = email.server.connect({
       user: "varnew@163.com", // 开启POP3/SMTP服务的邮箱
       password: "wxl19960101", // 授权码填在这里
@@ -15,10 +20,10 @@ class EmailService extends Service {
       ssl: true, // 开启SSL
     })
     var message = {
-      from: "<varnew@163.com>", // 发送方邮件地址
-      to: "861461335@qq.com", // 接受方邮件地址，多个接收方用英文逗号分隔即可
-      subject: "错误通知",
-      text: "错误内容",
+      from: "<varnew@163.com>", // 发送方邮件地址 <varnew@163.com>
+      to: data.to || "861461335@qq.com", // 接受方邮件地址，多个接收方用英文逗号分隔即可 861461335@qq.com
+      subject: data.subject,
+      text: data.text,
     }
     server.send(message, (err, message) => {
       console.log(err || message)

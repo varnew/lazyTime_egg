@@ -18,4 +18,5 @@ module.exports = app => {
   router.get('fundebug', '/fundebug/getErrors', controller.fundebug.getErrors);
   router.get('fundebug', '/fundebug/getErrorByTypeId', controller.fundebug.getErrorByTypeId);
   router.get('fundebug', '/fundebug/counts', controller.fundebug.getCounts);
+  router.get('bacc', '/bacc', controller.bacc.getBacc);
 };
