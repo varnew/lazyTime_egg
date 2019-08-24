@@ -1,5 +1,9 @@
 # lazyTime_egg
 
+```
+docker run -d -t -v /var/lib/docker/volumes/mydata/_data:/data -p 7001:7001 --restart=always --name egg-bug-service ubuntu_node:latest /bin/bash /data/bug_egg_service/egg_bug_service.sh
+```
+
 ```bash
 $ npm i
 $ npm run dev
