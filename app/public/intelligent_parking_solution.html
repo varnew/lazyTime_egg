@@ -1,0 +1,563 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+<meta charset="utf-8">
+<title>城市智慧停车解决方案 | 大秦云 | 物联网云服务平台 | 智能产品|智能硬件解决方案</title>
+<meta name="keywords" content="广州物联网云平台,广州物联网提供商,物联网云平台,物联网解决方案,智能家具,智能网关,边缘工业网关,物联网模块,大秦云,大秦IoT">
+<meta name="description" content="大秦云物联网云平台安全可靠。自研动态网关接入设备只需3分钟，方便快捷。支持可视化硬件编程，使用无门槛。切实关注企业需求，支持业务层定制以及私有化部署。">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="90arther@gmail.com">
+
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="icon.png">
+<!-- Place favicon.ico in the root directory -->
+<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+
+<meta name="theme-color" content="#fafafa">
+<style type="text/css">
+/* Reset (by YUI 3) */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+input,textarea,select{*font-size:100%;}
+legend{color:#000;}
+/* Reset ends */
+
+.hidden {display: none;}
+.wrapper {overflow:hidden;min-width:1200px;padding-top:70px;}
+.content {position:relative;margin:0 auto;width: 1200px;}
+.divider {margin:10px auto 40px;width:100px;height:3px;background:linear-gradient(90deg,rgba(42,199,253,1) 0%,rgba(35,242,249,1) 100%);}
+
+.pg-tool{width:50px;height:202px;border-radius:16px 0px 0px 16px;position: fixed;top: 50%;right: 0px;margin-top: -56px;background:rgba(3,9,27,1);z-index: 1;}
+.pg-tool ul:hover .pg-tool__qq::after{display: none;}
+.pg-tool ul li{width:24px;padding:0px 13px;text-align:center;cursor:pointer;transition:all 0.5s;position:relative;}
+.pg-tool ul li.pg-tool__qq::after{content:'';position:absolute;bottom:0px;left:13px;width: 24px;height:1px;background:#464A62;}
+.pg-tool ul li img{width: 24px;height: 24px;}
+.pg-tool ul li span{line-height:24px;color:#9195B4;}
+.pg-tool ul li:hover{background: rgba(37, 225, 250, 1);}
+.pg-tool ul li:hover span{color:#fff;}
+
+.header {background:#03091B;z-index:100;position: fixed;left:0;right:0;top:0;}
+.header .content {height:70px;}
+.header__logo {margin: 20px 0 0 50px;float:left;width:110px;height:34px;}
+.header-menu {float: left;margin-left: 55px;}
+.header-menu__item {float: left;margin-right:33px;}
+.header-menu__item-link {transition:all .5s;position:relative;display:block;height:70px;line-height:70px;font-size:16px;color:#fff;}
+.header-menu__item-link::after {transition:all .5s;content: '\20';position:absolute;bottom:15px;left:0;width:100%;height:2px;border-radius:2px;background:#03091B;}
+.header-menu__item-link:link,
+.header-menu__item-link:visited {text-decoration: none;color:#fff;}
+.header-menu__item-link:hover,
+.header-menu__item-link:active {text-decoration: none;color:#23F2F9;}
+.header-menu__item-link:hover::after{background:#23F2F9;}
+.header-menu__item-link_active:link,
+.header-menu__item-link_active:visited {color:#23F2F9;}
+.header-menu__item-link_active::after{background:#23F2F9;}
+.header .content .btn-list{float: right;width: 200px;height: 70px;}
+.header .content .btn-list .btn-item{float: left;margin-top:20px;padding: 4px 9px;color: #fff;font-weight: 600;border-radius:4px;text-decoration: none;background: rgba(0, 0, 0, 0);-webkit-transition: all 0.5s;-moz-transition: all 0.3s;-ms-transition: all 0.3s;-o-transition: all 0.3s;transition: all 0.3s;}
+.header .content .btn-list .btn-blue{margin-left: 26px;background:linear-gradient(180deg,rgba(35,242,249,1) 0%,rgba(42,199,253,1) 100%);color: #1D3E67;}
+.header .content .btn-list .btn-blue:hover{color: #fff;}
+.header .content .btn-list .btn-login:hover{color: #23F2F9;position: relative;}
+.header .content .btn-list .btn-login:hover::after {transition:all .5s;content: '\20';position:absolute;bottom:-5px;left:10px;width:62px;height:2px;border-radius:2px;background:#15f2f9;}
+.product-case-menu:hover .case-menu{height:380px;}
+.case-menu{position: absolute;top: 70px;left:0px;width:100%;background: #11192F;clear: both;height:0px;overflow:hidden;transition: all 0.5s;}
+.case-menu .case-menu-item{min-width:178px;float: left;margin-right: 10px;}
+.case-menu .case-menu-item:first-child{margin-left: 70px;}
+.case-menu .case-menu-item .case-title{padding: 20px 0px 18px;border-bottom:1px solid #43495A;font-size: 18px;color:#24EBF9;}
+.case-menu .case-menu-item .case-list{padding-bottom: 198px;}
+.case-menu .case-menu-item .case-list .case-item{font-size: 14px;color:#DADADA;padding: 20px 0px 0px;cursor: pointer;}
+.case-menu .case-menu-item .case-list .case-item:hover{color:#24EBF9;}
+.product-solution-menu:hover .solution-menu{height:380px;}
+.solution-menu{position: absolute;top: 70px;left:0px;width:100%;background: #11192F;clear: both;height:0px;overflow:hidden;transition: all 0.5s;}
+.solution-menu .solution-menu-item{min-width:178px;float: left;margin-right: 10px;}
+.solution-menu .solution-menu-item:first-child{margin-left: 70px;}
+/*.solution-menu .solution-menu-item .solution-title{padding: 20px 0px 18px;border-bottom:1px solid #43495A;font-size: 18px;color:#24EBF9;}*/
+.solution-menu .solution-menu-item .solution-list{padding-bottom: 198px;}
+.solution-menu .solution-menu-item .solution-list .solution-item {padding: 20px 0px 0px;cursor: pointer;}
+.solution-menu .solution-menu-item .solution-list .solution-item a{font-size: 14px;color:#DADADA;padding: 20px 0px 0px;cursor: pointer;text-decoration: none;}
+.solution-menu .solution-menu-item .solution-list .solution-item:hover a{color:#24EBF9;}
+.solution-menu .solution-menu-item .solution-list .solution-item a.active{color:#24EBF9;}
+
+.pg-banner{}
+.pg-banner .pg-banner-item{height: 460px;background: url(https://static.czmpv.com/static/office/iot/solution/banner@2x.png) no-repeat top center;background-size: cover;position: relative;}
+.pg-banner .pg-banner-item .pg-banner-item-info{width: 1100px;margin: 0px auto 0px;}
+.pg-banner .pg-banner-item .pg-banner-item-info .pg-banner-item-title{height:60px;line-height:60px;padding-top: 110px;font-size:40px;font-weight:600;color:rgba(255,255,255,1);}
+.pg-banner .pg-banner-item .pg-banner-item-info .pg-banner-item-desc{width:730px;height:80px;line-height:40px;padding: 20px 0px 30px;font-size:20px;color:rgba(255,255,255,1);}
+.pg-banner .pg-banner-item .pg-banner-item-info .pg-banner-item-btn{width:100px;height:30px;line-height:30px;background:linear-gradient(180deg,rgba(35,242,249,1) 0%,rgba(42,199,253,1) 100%);border-radius:15px;text-align: center;font-size:16px;color:rgba(29,62,103,1);cursor: pointer;}
+
+.pg-car-manager{background: #fff;text-align: center;}
+.pg-car-manager .pg-car-manager-title{height:40px;line-height:40px;padding-top: 90px;font-size:26px;font-weight:600;color:rgba(37,39,49,1);}
+.pg-car-manager .pg-car-manager-desc{width:860px;height:70px;margin: 0px auto;padding-top: 20px;line-height:36px;font-size:18px;font-weight:300;color:rgba(119,119,119,1);}
+.pg-car-manager .pg-car-manager-list{width:920px;height:370px;margin: 60px auto 0px;}
+.pg-car-manager .pg-car-manager-list .pg-car-manager-list-item{width:420px;height:120px;border-radius:10px;overflow:hidden;position: relative;}
+.pg-car-manager .pg-car-manager-list .pg-car-manager-list-item .pg-car-manager-list-item-img{width: 100%;height: 100%;position: relative;}
+.pg-car-manager .pg-car-manager-list .pg-car-manager-list-item .pg-car-manager-list-item-desc{height:120px;line-height:30px;font-size:20px;font-weight:600;color:rgba(255,255,255,1);position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;line-height: 120px;background: rgba(0, 0, 0, 0.4);transition: all 1s;}
+.pg-car-manager .pg-car-manager-list .pg-car-manager-list-item .pg-car-manager-list-item-desc:hover{background: rgba(0, 0, 0, 0);}
+
+.pg-car-idea{padding-bottom:90px;background: url(https://static.czmpv.com/static/office/iot/solution/02@2x.png) no-repeat top center;background-size: cover;text-align: center;}
+.pg-car-idea .pg-car-idea-title{height:40px;line-height:40px;padding-top: 90px;font-size:26px;font-weight:600;color:#FFFFFF;}
+.pg-car-idea .pg-car-idea-desc{width:860px;height:70px;margin: 0px auto;padding-top: 20px;line-height:36px;font-size:18px;font-weight:300;color:#F0F0F0;}
+.pg-car-idea .pg-car-idea-list{width:920px;height:310px;margin: 40px auto 0px;}
+.pg-car-idea .pg-car-idea-list .pg-car-idea-list-item{width:260px;height:260px;border-radius:10px;position: relative;}
+.pg-car-idea .pg-car-idea-list .pg-car-idea-list-item .pg-car-idea-list-item-img{width: 100%;height: 100%;position: relative;}
+.pg-car-idea .pg-car-idea-list .pg-car-idea-list-item .pg-car-idea-list-item-icon{width: 120px;height: 120px;position: absolute;top: 50%;left: 50%;margin: -60px 0px 0px -60px;transition: all 0.3s;}
+.pg-car-idea .pg-car-idea-list .pg-car-idea-list-item .pg-car-idea-list-item-icon1{background: url(https://static.czmpv.com/static/office/iot/solution/wrzs@2x.png) no-repeat top center;background-size: cover;}
+.pg-car-idea .pg-car-idea-list .pg-car-idea-list-item:hover .pg-car-idea-list-item-icon1{width: 180px;height: 180px;position: absolute;top: 50%;left: 50%;margin: -90px 0px 0px -90px;background: url(https://static.czmpv.com/static/office/iot/solution/wrzs_ac@2x.png) no-repeat top center;background-size: cover;}
+.pg-car-idea .pg-car-idea-list .pg-car-idea-list-item .pg-car-idea-list-item-icon2{background: url(https://static.czmpv.com/static/office/iot/solution/wxjzf@2x.png) no-repeat top center;background-size: cover;}
+.pg-car-idea .pg-car-idea-list .pg-car-idea-list-item:hover .pg-car-idea-list-item-icon2{width: 180px;height: 180px;position: absolute;top: 50%;left: 50%;margin: -90px 0px 0px -90px;background: url(https://static.czmpv.com/static/office/iot/solution/wxjzf_ac@2x.png) no-repeat top center;background-size: cover;}
+.pg-car-idea .pg-car-idea-list .pg-car-idea-list-item .pg-car-idea-list-item-icon3{background: url(https://static.czmpv.com/static/office/iot/solution/wgtc@2x.png) no-repeat top center;background-size: cover;}
+.pg-car-idea .pg-car-idea-list .pg-car-idea-list-item:hover .pg-car-idea-list-item-icon3{width: 180px;height: 180px;position: absolute;top: 50%;left: 50%;margin: -90px 0px 0px -90px;background: url(https://static.czmpv.com/static/office/iot/solution/wgtc_ac@2x.png) no-repeat top center;background-size: cover;}
+.pg-car-idea .pg-car-idea-list .pg-car-idea-list-item .pg-car-idea-list-item-desc{height:30px;padding-top: 20px;font-size:20px;color:rgba(240,240,240,1);line-height:30px;}
+.pg-car-idea .pg-car-idea-list .pg-car-idea-list-item:hover .pg-car-idea-list-item-desc{color:#26c8eb;font-weight: 600;}
+
+.pg-framework{padding-bottom:114px;background: #fff;text-align: center;}
+.pg-framework .pg-framework-title{height:40px;line-height:40px;padding: 90px 0px 20px;font-size:26px;font-weight:600;color:#252731;}
+.pg-framework .pg-framework-img{width:1050px;margin: 0px auto;}
+
+.pg-function{padding-bottom:120px;background: url(https://static.czmpv.com/static/office/iot/solution/hegn_bg.png) no-repeat top center;background-size: cover;text-align: center;}
+.pg-function .pg-function-title{height:40px;line-height:40px;padding: 90px 0px 20px;font-size:26px;font-weight:600;color:#F0F0F0;}
+.pg-function .pg-function-list{width:1020px;height:360px;margin:30px auto 0px;}
+.pg-function .pg-function-list .pg-function-list-item{width:180px;height:360px;float: left;text-align: center;background:rgba(255,255,255,0.85);border-radius:10px;transition: all 0.5s;}
+.pg-function .pg-function-list .pg-function-list-item:hover{transform: scale(1.2);background:linear-gradient(180deg,rgba(35,242,249,1) 0%,rgba(42,199,253,1) 100%);}
+.pg-function .pg-function-list .pg-function-list-item + .pg-function-list-item{margin-left: 30px;}
+.pg-function .pg-function-list .pg-function-list-item .icon{width:80px;height:80px;margin: 40px auto 10px;}
+.pg-function .pg-function-list .pg-function-list-item .icon1{background: url(https://static.czmpv.com/static/office/iot/solution/sjcj_fn@2x.png) no-repeat top center; background-size: cover;}
+.pg-function .pg-function-list .pg-function-list-item:hover .icon1{background: url(https://static.czmpv.com/static/office/iot/solution/sjcj_fn_ac@2x.png) no-repeat top center; background-size: cover;}
+.pg-function .pg-function-list .pg-function-list-item .icon2{background: url(https://static.czmpv.com/static/office/iot/solution/sfgl_fn@2x.png) no-repeat top center; background-size: cover;}
+.pg-function .pg-function-list .pg-function-list-item:hover .icon2{background: url(https://static.czmpv.com/static/office/iot/solution/sfgl_fn_ac@2x.png) no-repeat top center; background-size: cover;}
+.pg-function .pg-function-list .pg-function-list-item .icon3{background: url(https://static.czmpv.com/static/office/iot/solution/ydxt_fn@2x.png) no-repeat top center; background-size: cover;}
+.pg-function .pg-function-list .pg-function-list-item:hover .icon3{background: url(https://static.czmpv.com/static/office/iot/solution/ydxt_fn_ac@2x.png) no-repeat top center; background-size: cover;}
+.pg-function .pg-function-list .pg-function-list-item .icon4{background: url(https://static.czmpv.com/static/office/iot/solution/fxjc_fn@2x.png) no-repeat top center; background-size: cover;}
+.pg-function .pg-function-list .pg-function-list-item:hover .icon4{background: url(https://static.czmpv.com/static/office/iot/solution/fxjc_fn_ac@2x.png) no-repeat top center; background-size: cover;}
+.pg-function .pg-function-list .pg-function-list-item .icon5{background: url(https://static.czmpv.com/static/office/iot/solution/ycbj@2x.png) no-repeat top center; background-size: cover;}
+.pg-function .pg-function-list .pg-function-list-item:hover .icon5{background: url(https://static.czmpv.com/static/office/iot/solution/ycbj_ac@2x.png) no-repeat top center; background-size: cover;}
+.pg-function .pg-function-list .pg-function-list-item .title{height:30px;line-height:30px;font-size:20px;font-weight:600;color:rgba(37,39,49,1);}
+.pg-function .pg-function-list .pg-function-list-item .placeholder{width:40px;height:1px;margin: 14px auto 10px;background: #979797;}
+.pg-function .pg-function-list .pg-function-list-item:hover .placeholder{height:2px;background: #252731;}
+.pg-function .pg-function-list .pg-function-list-item .desc{width:140px;margin: 0px auto;line-height:34px;font-size:18px;color:rgba(119,119,119,1);}
+.pg-function .pg-function-list .pg-function-list-item:hover .desc{color:#252731;}
+
+.pg-value{padding-bottom:140px;background: #fff;text-align: center;}
+.pg-value .pg-value-title{height:40px;line-height:40px;padding: 90px 0px 20px;font-size:26px;font-weight:600;color:#252731;}
+.pg-value .pg-value-desc{width:880px;height:70px;margin: 0px auto;font-size:18px;font-weight:300;color:rgba(119,119,119,1);line-height:36px;}
+.pg-value .pg-value-list{width: 800px;height:400px;margin: 0px auto;}
+.pg-value .pg-value-list .pg-value-list-item{float: left;min-width: 166px;margin-top: 42px;}
+.pg-value .pg-value-list .pg-value-list-item .icon{width:140px;height:140px;margin: 0px auto;}
+.pg-value .pg-value-list .pg-value-list-item .icon1{background:url(https://static.czmpv.com/static/office/iot/solution/fkjf@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item:hover .icon1{background:url(https://static.czmpv.com/static/office/iot/solution/fkjf_ac@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item .icon2{background:url(https://static.czmpv.com/static/office/iot/solution/fkjffz1@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item:hover .icon2{background:url(https://static.czmpv.com/static/office/iot/solution/fkjffz1_ac@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item .icon3{background:url(https://static.czmpv.com/static/office/iot/solution/fkjffz2@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item:hover .icon3{background:url(https://static.czmpv.com/static/office/iot/solution/fkjffz2_ac@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item .icon4{background:url(https://static.czmpv.com/static/office/iot/solution/fkjffz3@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item:hover .icon4{background:url(https://static.czmpv.com/static/office/iot/solution/fkjffz3_ac@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item .icon5{background:url(https://static.czmpv.com/static/office/iot/solution/fkjffz4@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item:hover .icon5{background:url(https://static.czmpv.com/static/office/iot/solution/fkjffz4_ac@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item .icon6{background:url(https://static.czmpv.com/static/office/iot/solution/fkjffz5@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item:hover .icon6{background:url(https://static.czmpv.com/static/office/iot/solution/fkjffz5_ac@2x.png) no-repeat top center;background-size: cover;}
+.pg-value .pg-value-list .pg-value-list-item .desc{height:40px;font-size:20px;font-weight:400;color:rgba(37,39,49,1);line-height:40px;}
+.pg-value .pg-value-list .pg-value-list-item:hover .desc{font-weight: 600;}
+
+.pg-concat{height:300px;background: #1C1E27;}
+.pg-concat .pg-concat-contain{width: 900px;margin: 0px auto 0px;padding-top: 60px;position: relative;
+}
+.pg-concat .pg-concat-contain .pg-concat-phone{width: 500px;height: 110px;position: relative;}
+.pg-concat .pg-concat-contain .pg-concat-phone img{width: 220px;height: 190px;position: absolute;top: 0px;left: 0px; }
+.pg-concat .pg-concat-contain .pg-concat-phone .info{padding-left: 235px;}
+.pg-concat .pg-concat-contain .pg-concat-phone .info .title{ height:40px;padding-top: 24px;font-size:22px;font-weight:600;color:rgba(240,240,240,1);line-height:40px;}
+.pg-concat .pg-concat-contain .pg-concat-phone .info .phone{height:38px;padding: 11px 0px 20px;font-size:18px; color:rgba(240,240,240,1);line-height:40px;}
+.pg-concat .pg-concat-contain .pg-concat-phone .info .btn{width:100px;height:30px;background:linear-gradient(180deg,rgba(35,242,249,1) 0%,rgba(42,199,253,1) 100%);border-radius:15px;font-size:16px;color:rgba(29,62,103,1);line-height:30px;text-align: center;cursor: pointer;}
+.pg-concat .pg-concat-contain .pg-concat-phone .info .btn a{font-size:16px;color:rgba(29,62,103,1);line-height:30px;text-decoration: none;}
+.pg-concat .pg-concat-contain .pg-concat-public{position: absolute;right: 36px;top: 60px;}
+.pg-concat .pg-concat-contain .pg-concat-public img{width: 140px;height: 140px;}
+.pg-concat .pg-concat-contain .pg-concat-public .desc{height:30px;padding-top:15px;font-size:18px;color:rgba(240,240,240,1);line-height:30px;}
+
+.pg-contact-wrapper {background:#252731;}
+.pg-contact {position: relative;overflow:hidden;box-sizing: border-box;margin:0 auto;padding: 70px 50px 60px;width:1200px;}
+.pg-contact__logo_yugang {display:block;width:220px;height:60px;}
+.pg-contact__desc {margin-top:10px;line-height:30px;font-size:16px;letter-spacing:1px;color:#A5A8B4;}
+.pg-contact-menu {overflow: hidden;}
+.pg-contact-menu li {float:left;margin-right:16px;line-height: 30px;font-size:16px;color:#7F8291;}
+.pg-contact-menu__item-link {text-decoration: none;font-size:16px;color:#7F8291;}
+.pg-contact-tel {position:absolute;right:0;top:70px;color:#fff;}
+.pg-contact h4 {padding:0 50px;line-height:30px;font-size:24px;font-weight:600;color:#fff;background:url(https://static.czmpv.com/static/office/yugang/icon_phone.png) no-repeat left center;}
+.pg-contact-tel-list {margin-top:40px;overflow: hidden;padding-left:50px;}
+.pg-contact-tel-list li {float: left;padding-left:20px;margin-right:70px;font-size:18px;font-weight:600;line-height:30px;border-left:1px solid #3F4454;}
+
+footer {overflow:hidden;height:80px;line-height:80px;font-size:16px;background:#1C1E27;color:#7F8291;}
+footer .content {position: relative;box-sizing: border-box;padding: 0 50px;}
+.beian {position:absolute;right:0;top: 20px;}
+</style>
+</head>
+
+<body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+  <!-- SEO -->
+  <h1 class="hidden">大秦云</h1>
+  <h2 class="hidden">物联网云服务平台,5G,NB-IoT,智能家电物业管理商用租赁新零售工业物联网平台</h2>
+  <img style="display:none;" alt="大秦云" src="https://static.czmpv.com/static/office/baidu_search/logo_dq_01.png" />
+  <img style="display:none;" alt="大秦云" src="https://static.czmpv.com/static/office/baidu_search/logo_dq_02.png" />
+
+  <div class="wrapper">
+
+    <header class="header">
+      <div class="content">
+        <img class="header__logo" src="https://static.czmpv.com/static/office/iot/LOGO@2x.png"/>
+        <ul class="header-menu" id="menu">
+          <li class="header-menu__item">
+            <a href="./index.html" class="header-menu__item-link" data-target="pg-intro-wrapper">首页</a>
+          </li>
+          <li class="header-menu__item">
+            <a href="./dtu_product.html" class="header-menu__item-link" data-target="pg-struction-wrapper">网关产品</a>
+          </li>
+          <li class="header-menu__item product-case-menu">
+            <a href="../view/case.html" class="header-menu__item-link">优秀案例</a>
+            <ul class="case-menu" id="case-menu">
+              <li class="case-menu-item">
+                <div class="case-title">工业设备</div>
+                <ul class="case-list">
+                  <li class="case-item" data-menu="gysb" data-case="cyljhsxt">餐余垃圾回收系统</li>
+                  <li class="case-item" data-menu="gysb" data-case="sdqjnkzxt">水电气节能控制系统</li>
+                  <li class="case-item" data-menu="gysb" data-case="gyjjcsxt">工业酒精测试系统</li>
+                </ul>
+              </li>
+              <li class="case-menu-item">
+                <div class="case-title">智能家居</div>
+                <ul class="case-list">
+                  <li class="case-item" data-menu="znjj" data-case="znhwsbkz">智能红外设备控制</li>
+                </ul>
+              </li>
+              <li class="case-menu-item">
+                <div class="case-title">共享设备</div>
+                <ul class="case-list">
+                  <li class="case-item" data-menu="gxsb" data-case="znsdzxm">智能水电桩项目</li>
+                  <li class="case-item" data-menu="gxsb" data-case="znzdglptxm">智能终端管理平台项目</li>
+                  <li class="case-item" data-menu="gxsb" data-case="zxzww">在线抓娃娃</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="header-menu__item product-solution-menu">
+            <a href="javascript:" class="header-menu__item-link header-menu__item-link_active">解决方案</a>
+            <ul class="solution-menu" id="solution-menu">
+              <li class="solution-menu-item">
+                <div class="solution-title"></div>
+                <ul class="solution-list">
+                  <li class="solution-item">
+                    <a class='active' href="./solution/intelligent_parking.html">城市智慧停车解决方案</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="header-menu__item">
+            <a href="./information.html" class="header-menu__item-link" data-target="pg-product-wrapper">行业新闻</a>
+          </li>
+          <li class="header-menu__item">
+            <!--<a href="https://www.czyugang.com/about.html" target="_blank" class="header-menu__item-link" data-target="pg-product-wrapper">关于我们</a>-->
+            <a href="./about.html" class="header-menu__item-link" data-target="pg-product-wrapper">关于我们</a>
+          </li>
+        </ul>
+        <div class="btn-list">
+          <a href="https://iot.bycloud.it/" target="_blank" class="btn-item btn-login">立即登录</a>
+          <a href="https://iot.bycloud.it/login?tab=apply" target="_blank" class="btn-item btn-blue">申请试用</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="pg-banner">
+      <div class="pg-banner-item">
+        <div class="pg-banner-item-info">
+          <div class="pg-banner-item-title">城市智慧停车解决方案</div>
+          <div class="pg-banner-item-desc">实现城市停车智慧物联一张网，有效整合城市停车资源，引导和规范城市停车秩序 为整个城市管理带来可观的社会效益和经济效益。</div>
+          <div class="pg-banner-item-btn">
+            <a href="./landing_page_baidu.html" style="text-decoration: none;color:rgba(29,62,103,1)">方案咨询</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-car-manager">
+      <div class="pg-car-manager-title">优秀的城市环境需要一个整齐有序的停车管理</div>
+      <div class="pg-car-manager-desc">实现城市停车智慧物联一张网，有效整合城市停车资源，引导和规范城市停车秩序，提高道路通行能力，并为民众提供停车便民服务，提升城市文明程度，为整个城市管理带来可观的社会效益和经济效益。</div>
+      <div class="pg-car-manager-list">
+        <div class="pg-car-manager-list-item" style="float: left;">
+          <img class="pg-car-manager-list-item-img" src="https://static.czmpv.com/static/office/iot/solution/1@2x.png" alt="">
+          <div class="pg-car-manager-list-item-desc">引导和规范城市停车秩序</div>
+        </div>
+        <div class="pg-car-manager-list-item" style="float: right;">
+          <img class="pg-car-manager-list-item-img" src="https://static.czmpv.com/static/office/iot/solution/3@2x.png" alt="">
+          <div class="pg-car-manager-list-item-desc">整合停车资源，有效利用城市资源</div>
+        </div>
+        <div class="pg-car-manager-list-item" style="float: left;margin-top: 40px;">
+          <img class="pg-car-manager-list-item-img" src="https://static.czmpv.com/static/office/iot/solution/2@2x.png" alt="">
+          <div class="pg-car-manager-list-item-desc">规范收费管理，提高管理效率</div>
+        </div>
+        <div class="pg-car-manager-list-item" style="float: right;margin-top: 40px;">
+          <img class="pg-car-manager-list-item-img" src="https://static.czmpv.com/static/office/iot/solution/4@2x.png" alt="">
+          <div class="pg-car-manager-list-item-desc">提供便民的信息化、智能化的公众服务</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-car-idea">
+      <div class="pg-car-idea-title">打造智慧城市第一步，实现“三无停车”理念</div>
+      <div class="pg-car-idea-desc">基于大秦科技“物联网+移动互联网+云计算+大数据+安全集成”的核心技术，建设城市级路内路外一体化的综合智慧停车解决方案，保障城市道路停车的有序、高效管理。</div>
+      <div class="pg-car-idea-list">
+        <div class="pg-car-idea-list-item" style="float: left;">
+          <img class="pg-car-idea-list-item-img" src="https://static.czmpv.com/static/office/iot/solution/1@2x(1).png" alt="">
+          <div class="pg-car-idea-list-item-icon pg-car-idea-list-item-icon1"></div>
+          <div class="pg-car-idea-list-item-desc">无人值守</div>
+        </div>
+        <div class="pg-car-idea-list-item" style="float: left;margin: 0px 70px;">
+          <img class="pg-car-idea-list-item-img" src="https://static.czmpv.com/static/office/iot/solution/3@2x(1).png" alt="">
+          <div class="pg-car-idea-list-item-icon pg-car-idea-list-item-icon2"></div>
+          <div class="pg-car-idea-list-item-desc">无现金支付</div>
+        </div>
+        <div class="pg-car-idea-list-item" style="float: left;">
+          <img class="pg-car-idea-list-item-img" src="https://static.czmpv.com/static/office/iot/solution/4@2x(1).png" alt="">
+          <div class="pg-car-idea-list-item-icon pg-car-idea-list-item-icon3"></div>
+          <div class="pg-car-idea-list-item-desc">无感停车</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-framework">
+      <div class="pg-framework-title">平台架构</div>
+      <img class="pg-framework-img" src="https://static.czmpv.com/static/office/iot/solution/ALL@2x.png" />
+    </section>
+
+    <section class="pg-function">
+      <div class="pg-function-title">核心功能</div>
+      <ul class="pg-function-list">
+        <li class="pg-function-list-item">
+          <div class="icon icon1"></div>
+          <div class="title">数据采集</div>
+          <div class="placeholder"></div>
+          <div class="desc">视频、地磁</div>
+          <div class="desc">支持多设备协议</div>
+          <div class="desc">DTU网关连接</div>
+          <div class="desc">大秦云IoT</div>
+        </li>
+        <li class="pg-function-list-item">
+          <div class="icon icon2"></div>
+          <div class="title">收费管理</div>
+          <div class="placeholder"></div>
+          <div class="desc">自动计费</div>
+          <div class="desc">停车缴费</div>
+          <div class="desc">欠费追缴</div>
+          <div class="desc">充值管理</div>
+        </li>
+        <li class="pg-function-list-item">
+          <div class="icon icon3"></div>
+          <div class="title">诱导系统</div>
+          <div class="placeholder"></div>
+          <div class="desc">诱导发布</div>
+          <div class="desc">N级诱导屏</div>
+          <div class="desc">终端查询</div>
+          <div class="desc">智能诱导</div>
+        </li>
+        <li class="pg-function-list-item">
+          <div class="icon icon4"></div>
+          <div class="title">分析决策</div>
+          <div class="placeholder"></div>
+          <div class="desc">数据分析</div>
+          <div class="desc">车位共享</div>
+          <div class="desc">车位预定</div>
+          <div class="desc">反向寻车</div>
+        </li>
+        <li class="pg-function-list-item">
+          <div class="icon icon5"></div>
+          <div class="title">异常报警</div>
+          <div class="placeholder"></div>
+          <div class="desc">违停干预</div>
+          <div class="desc">遮挡报警</div>
+          <div class="desc">碰撞报警</div>
+          <div class="desc">车位被占</div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="pg-value">
+      <div class="pg-value-title">纵向价值</div>
+      <div class="pg-value-desc">随着城市智慧停车平台的推广与运营，积累庞大的停车、用户、车位等多维度的大数据，对于这些大数据的分析与应用，将为平台带来更大的纵向价值。</div>
+      <ul class="pg-value-list">
+        <li class="pg-value-list-item">
+          <div class="icon icon1"></div>
+          <div class="desc">自助交通罚款缴费</div>
+        </li>
+        <li class="pg-value-list-item" style="margin: 32px 151px 0px;">
+          <div class="icon icon2"></div>
+          <div class="desc">城市交通热力图</div>
+        </li>
+        <li class="pg-value-list-item">
+          <div class="icon icon3"></div>
+          <div class="desc">智能交通信号</div>
+        </li>
+        <li class="pg-value-list-item">
+          <div class="icon icon4"></div>
+          <div class="desc">找代驾</div>
+        </li>
+        <li class="pg-value-list-item" style="margin: 32px 151px 0px;">
+          <div class="icon icon5"></div>
+          <div class="desc">一键挪车</div>
+        </li>
+        <li class="pg-value-list-item">
+          <div class="icon icon6"></div>
+          <div class="desc">保险服务</div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="pg-concat">
+      <div class="pg-concat-contain">
+        <div class="pg-concat-phone">
+          <img src="https://static.czmpv.com/static/office/iot/solution/phone_white.png" alt="">
+          <div class="info">
+            <div class="title">获取更多解决方案信息</div>
+            <div class="phone">陈经理：173-2251-6495</div>
+            <div class="btn">
+              <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=969221509&amp;site=qq&amp;menu=yes" target="_blank">立即咨询</a>
+            </div>
+          </div>
+        </div>
+        <div class="pg-concat-public">
+          <img src="https://static.czmpv.com/static/office/iot/solution/public@2x.png" alt="">
+          <div class="desc">扫一扫关注公众号</div>
+        </div>
+      </div>
+    </section>
+
+    <!--百度退管审核版联系模块-->
+    <section class="pg-contact-wrapper">
+      <div class="pg-contact" style="padding: 40px 48px;">
+        <div style="height:40px;line-height: 40px;">
+          <img style="float:left;width: 126px;height: 40px;" src="https://static.czmpv.com/static/office/iot/LOGO@2x.png"/>
+          <span style="padding-left: 40px;font-size: 24px;color:#fff;">轻松上云，智联未来</span>
+          <a href="./about.html" style="margin-left:65px;font-size: 22px;color: #7F8291;text-decoration: none;">关于我们</a>
+          <a href="./about.html" style="margin-left:40px;font-size: 22px;color: #7F8291;text-decoration: none;">联系我们</a>
+          <a href="https://www.lagou.com/gongsi/112275.html" target="_blank" style="margin-left:40px;font-size: 22px;color: #7F8291;text-decoration: none;">诚聘英才</a>
+          <span style="display:inline-block;width:246px;margin-left:10px;text-align: center;font-weight: normal;font-size: 20px;color:#fff;position: relative;left: 16px;">
+            <img style="width:32px;height:32px;margin-right: 8px;" src="https://static.czmpv.com/static/office/yugang/icon_phone.png" alt="">
+            <span>电话：<span style="font-family:Impact;">020-38837679</span></span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-tool">
+      <ul>
+        <li class="pg-tool__qq" style="padding: 12px 13px;border-radius:16px 0px 0px 0px;">
+          <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=969221509&amp;site=qq&amp;menu=yes" target="_blank" title="点击咨询">
+            <img src="https://static.czmpv.com/static/office/iot/floaticon／qq@2x.png" alt="">
+          </a>
+        </li>
+        <li id="scrollTop" style="padding: 12px 13px;border-radius:0px 0px 0px 16px;">
+          <img src="https://static.czmpv.com/static/office/iot/floaticon／rocket@2x.png" alt="" style="padding-bottom: 10px;">
+          <span>返 回 顶 部</span>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <div class="content">
+        <p>Copyright &copy;2014-2019 广州大秦信息科技有限公司 ALL Rights Reserved. 粤ICP备19132816号-1</p>
+        <div class="beian">
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://static.czmpv.com/static/js/jquery.min.v1.10.2.js"></script>
+  <script src="https://static.czmpv.com/static/js/jquery.scrollto.min.js"></script>
+  <script>
+  function setHeaderClass () {
+    var sticky = $('#header');
+    var scroll = $(window).scrollTop();
+    if (scroll >= 50) sticky.addClass('header_scroll');
+    else sticky.removeClass('header_scroll');
+  }
+  setHeaderClass();
+  $(window).scroll(function() {
+    setHeaderClass()
+  })
+  $('#menu').click(function (e) {
+    var target = ''
+    try { target = e.target.dataset.target } catch (e) {}
+    console.log(target)
+    $("html,body").animate({scrollTop:$(('.'+target)).offset().top - 50},500)
+    // $.scrollTo($(('.'+target)), 200)
+  })
+  $('#scrollTop').click(function (e) {
+    $.scrollTo($(('.wrapper')), 200)
+  })
+  </script>
+  <!--啄木鸟统计-->
+  <script type="text/javascript">
+    var _paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//t22.qifeiye.com/";
+      _paq.push(['setTrackerUrl', u+'js/tracker.php']);
+      _paq.push(['setSiteId', '273']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js/tracker.php'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <!--百度统计-->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e739521e602dbfbdcc7c16cf5d9d91e4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <!--百度收录-->
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+  <!-- 优秀案例下拉菜单 -->
+  <script type="text/javascript">
+    // 监听 优秀案例下拉菜单点击事件
+    $('#case-menu .case-item').on('click', function(e) {
+      e.stopPropagation()
+      var menu = ''
+      try { menu = e.target.dataset.menu } catch (e) {}
+      var caseTarget = ''
+      try { caseTarget = e.target.dataset.case } catch (e) {}
+      sessionStorage.setItem('menu_target', '#' + menu);
+      sessionStorage.setItem('case_target', '#' + caseTarget);
+      $(location).attr('href', './case.html')
+    })
+  </script>
+</body>
+</html>

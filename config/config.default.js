@@ -1,4 +1,5 @@
 'use strict';
+const path = require('path');
 
 module.exports = appInfo => {
   const config = exports = {};
@@ -37,26 +38,20 @@ module.exports = appInfo => {
     threshold: 1024 // 小于 1k 的响应体不压缩
   }
 
-  config.mysql = {
-    enable: true,
-    package: 'egg-mysql',
-    // 是否加载到 app 上，默认开启
-    app: true,
-    // 是否加载到 agent 上，默认关闭
-    agent: false,
-    client: { // 配置
-      // host: '193.112.72.172',
-      // port: '3306',
-      // user: 'root',
-      // password: 'varnew19960101',
-      // database: 'template'
-      host: '193.112.72.172',
-      port: '3306',
-      user: 'root',
-      password: 'root',
-      database: 'bug'
-    }
-  }
+  config.view = {
+    mapping: {'.html': 'ejs'} //左边写成.html后缀，会自动渲染.html文件
+  };
+
+  exports.static = {
+    prefix: '/public/',
+    dir: path.join('appInfo.baseDir', 'app/public'),
+    // dirs: [ dir1, dir2 ] or [ dir1, { prefix: '/static2', dir: dir2 } ],
+    // support lazy load
+    dynamic: true,
+    preload: false,
+    buffer: false,
+    maxFiles: 1000,
+  };
 
   return config;
 };

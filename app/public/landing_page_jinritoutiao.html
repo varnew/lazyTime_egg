@@ -1,0 +1,506 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <title>大秦云 | 物联网云服务平台 | 智能产品|智能硬件解决方案</title>
+  <meta name="keywords" content="广州物联网云平台,广州物联网提供商,物联网云平台,物联网解决方案,智能家具,智能网关,边缘工业网关,物联网模块,大秦云,大秦IoT">
+  <meta name="description" content="大秦云物联网云平台安全可靠。自研动态网关接入设备只需3分钟，方便快捷。支持可视化硬件编程，使用无门槛。切实关注企业需求，支持业务层定制以及私有化部署。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="90arther@gmail.com">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+  <style type="text/css">
+    /* Reset (by YUI 3) */
+    body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+    table{border-collapse:collapse;border-spacing:0;}
+    fieldset,img{border:0;}
+    address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+    li{list-style:none;}
+    caption,th{text-align:left;}
+    h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+    q:before,q:after{content:'';}
+    abbr,acronym{border:0;font-variant:normal;}
+    sup{vertical-align:text-top;}
+    sub{vertical-align:text-bottom;}
+    input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+    input,textarea,select{*font-size:100%;}
+    legend{color:#000;}
+    /* Reset ends */
+
+    .pg-form {height:1490px;background: url("https://static.czmpv.com/static/office/iot/lading_page/login_bg_pc2x.png") no-repeat top center; background-size: cover;}
+    .pg-form .logo{width: 225px;height:70px;display: block;margin: 0px auto;padding: 100px 0px 50px;}
+    .pg-form h3{font-size:50px;font-weight:bold;text-align: center;color: #fff;}
+    .pg-form .desc{padding:20px 0px 50px;font-size:30px;text-align: center;color:#fff;}
+    .pg-form .form{width:640px;height:560px;margin:0px auto;padding: 60px 0px;background: #17181E;border-radius: 20px;}
+    .pg-form .form input, .pg-form .form textarea{display:block;margin: 0px auto;overflow:hidden;border-radius:6px;border:1px solid #23F2F9;background: #17181E;font-size: 16px;color:#fff;outline: none;}
+    .pg-form .form input {margin-bottom:20px;text-indent:20px;display:block;width:480px;height:60px;}
+    .pg-form .form textarea {padding:16px 20px;width:440px;height:220px;line-height: 24px;}
+    .pg-form .form .btn_submit {display:block;width:230px;height:40px;margin: 40px auto 40px;text-align:center;font-size:16px;line-height:26px;border-color: transparent;color:#252731;background:linear-gradient(227deg,rgba(35,242,249,1) 0%,rgba(42,199,253,1) 100%);outline: none;
+      box-shadow:0px 8px 12px 0px rgba(0,0,0,0.1);border-radius:22px;cursor: pointer;}
+    ::-webkit-input-placeholder {color: #D7DBE7;}
+    ::-moz-placeholder {color: #D7DBE7;}
+    :-ms-input-placeholder {color: #D7DBE7;}
+    :-moz-placeholder {color: #D7DBE7;}
+    .pg-form .pg-form-step{width:1100px;height:190px;margin: 70px auto 60px;}
+    .pg-form .pg-form-step .pg-form-step-item{float:left;width:178px;height:190px;border:1px solid #23F2F9;background: #2B424E;border-radius:12px;}
+    .pg-form .pg-form-step .next{float:left;width:50px;height:190px;line-height:190px;text-align:center;}
+    .pg-form .pg-form-step .next img{width:20px;height:20px;}
+    .pg-form .pg-form-step .pg-form-step-item img{display:block;width:80px;height:80px;margin: 30px auto 10px;}
+    .pg-form .pg-form-step .pg-form-step-item .item-desc{text-align:center;font-size:26px;color:#29CAFC;}
+    .pg-form .tip-box{text-align: center;}
+    .pg-form .tip-box .text{display:inline-block;height:70px;line-height:70px;padding:0px 50px;border:1px solid #23F2F9;background: #2B424E;border-radius:12px;color:#C6CAD6;font-size:22px;}
+    .pg-form .tip-box .text >span{color:#29CAFC;font-size: 26px;}
+
+    .hidden {display: none;}
+    .wrapper {overflow:hidden;min-width:1200px;}
+    .content {position:relative;margin:0 auto;width: 1200px;}
+    .divider {margin:0px auto 0px;width:100px;height:20px;background:url("https://static.czmpv.com/static/office/iot/lading_page/line-2@2x.png") no-repeat;background-size: cover;}
+
+    .pg-tool{width:50px;height:202px;border-radius:16px 0px 0px 16px;position: fixed;top: 50%;right: 0px;margin-top: -56px;background:rgba(3,9,27,1);}
+    .pg-tool ul:hover .pg-tool__qq::after{display: none;}
+    .pg-tool ul li{width:24px;padding:0px 13px;text-align:center;cursor:pointer;transition:all 0.5s;position:relative;}
+    .pg-tool ul li.pg-tool__qq::after{content:'';position:absolute;bottom:0px;left:13px;width: 24px;height:1px;background:#464A62;}
+    .pg-tool ul li img{width: 24px;height: 24px;}
+    .pg-tool ul li span{line-height:24px;color:#9195B4;}
+    .pg-tool ul li:hover{background: rgba(37, 225, 250, 1);}
+    .pg-tool ul li:hover span{color:#fff;}
+
+    .pg-intro-wrapper {background:#fff;}
+    .pg-intro {overflow:hidden;margin:0 auto;padding-bottom: 100px;width:1200px;}
+    .pg-intro__title {margin:100px 0 10px;font-size:26px;line-height:40px;text-align:center;color:#191B29;}
+    .pg-intro__desc {margin:40px auto;width:800px;font-size: 16px;line-height:26px;text-align:center;color:#555;}
+    .pg-intro-flow {display: flex;align-items: center;justify-content: center; text-align: center;font-size:20px;color:#333333;}
+
+    .pg-product-wrapper {background: url("https://static.czmpv.com/static/office/iot/lading_page/advantage_bg@2x.png") no-repeat top center; background-size: cover;}
+    .pg-product {overflow:hidden;margin:0 auto;padding-bottom: 100px;width:1200px;}
+    .pg-product__title {margin:100px 0 10px;font-size:26px;line-height:40px;text-align:center;color:#fff;}
+    .pg-product__advantage {margin:60px 0 0;display: flex;flex-wrap: wrap;justify-content: space-between;}
+    .pg-product__advantage li {padding-bottom:40px;width: 340px;border-radius: 8px;background: #fff;margin-bottom: 40px;}
+    .pg-product__advantage .deep_bg {background: rgba(43, 67, 79, 0.6);}
+    .pg-product__advantage .deep_bg h4{color:#fff;}
+    .pg-product__advantage .deep_bg p{color:#E1E2E6;}
+    .pg-product__img {margin: 30px auto 0px;display:block;width:150px;height:150px;}
+    .pg-product__advantage h4 {position: relative;margin: 30px 0 32px;font-size:20px;color:#191B29;line-height:30px;text-align: center;}
+    .pg-product__advantage h4:before {content:'\20';position:absolute;left:50%;bottom: -10px;margin-left:-20px;width:39px;height:2px;background:linear-gradient(180deg,rgba(42,199,253,1) 0%,rgba(35,242,249,1) 100%);}
+    .pg-product__advantage p {margin:0 auto;width:260px;font-size:16px;line-height:26px;color:#333333;}
+
+    .pg-device-wrapper {height:1390px;background: url("https://static.czmpv.com/static/office/iot/lading_page/product_bg@2x.png") no-repeat top center; background-size: cover;}
+    .pg-device {overflow:hidden;margin:0 auto;padding-bottom: 100px;width:1200px;}
+    .pg-device__title {margin:100px 0 10px;font-size:26px;line-height:40px;text-align:center;color:#191B29;}
+    .divider {margin:0px auto 0px;width:150px;height:20px;background:url("https://static.czmpv.com/static/office/iot/lading_page/line-2@2x.png") no-repeat;background-size: cover;}
+    .device-list{width: 1020px;height: 600px;margin: 70px auto 0px;}
+    .device-list li{width:480px;height: 600px;border-radius: 10px;box-shadow: 0px 0px 10px #ddd;}
+    .device-list li img{display:block;width:306px;height: 288px;margin: 30px auto;}
+    .device-list .info{padding-left: 140px;}
+    .device-list .title{font-size:20px;color:#191B29;font-weight: 600;position: relative;}
+    .device-list .title::after{content: '';position: absolute;bottom:-16px;left:0px;width:40px;height: 2px;background: #23F2F9;}
+    .device-list .min-title{padding:60px 0px 10px 0px;font-size: 16px;color:#333;font-weight: 600;}
+    .device-list .item{padding: 6px 0px;font-size: 14px;color:#333333;}
+    .pg-device__sub_title{padding:80px 0px 20px;text-align:center;font-size: 20px;color:#333;font-weight: 600;}
+    .pg-device-character{width:1020px;height:300px;margin: 0px auto;}
+    .pg-device-character li{float:left;width:170px;height:300px;background: #fff;}
+    .pg-device-character .title{padding-top:40px;font-size:16px;color:#191B29;font-weight: 600;position: relative;text-align: center;}
+    .pg-device-character .title::after{content: '';position: absolute;bottom:-10px;left:50%;margin-left:-20px;width:40px;height: 2px;background: #23F2F9;}
+    .pg-device-character .desc{padding: 0px 16px;text-align: center;}
+    .pg-device-character .desc span{display:block;line-height: 28px;font-size: 14px;color:#333;}
+    .pg-device-character .pg-device-deep_bg{background: #5E808E;}
+    .pg-device-character .pg-device-deep_bg .title{color:#fff;}
+    .pg-device-character .pg-device-deep_bg .desc span{color:#fff;}
+
+    .pg-contact-wrapper {background:#252731;}
+    .pg-contact {position: relative;overflow:hidden;box-sizing: border-box;margin:0 auto;padding: 70px 50px 60px;width:1200px;}
+    .pg-contact__logo_yugang {display:block;width:220px;height:60px;}
+    .pg-contact__desc {margin-top:10px;line-height:30px;font-size:16px;letter-spacing:1px;color:#A5A8B4;}
+    .pg-contact-menu {overflow: hidden;}
+    .pg-contact-menu li {float:left;margin-right:16px;line-height: 30px;font-size:16px;color:#7F8291;}
+    .pg-contact-menu__item-link {text-decoration: none;font-size:16px;color:#7F8291;}
+    .pg-contact-tel {position:absolute;right:0;top:70px;color:#fff;}
+    .pg-contact h4 {padding:0 50px;line-height:30px;font-size:24px;font-weight:600;color:#fff;background:url(https://static.czmpv.com/static/office/yugang/icon_phone.png) no-repeat left center;}
+    .pg-contact-tel-list {margin-top:40px;overflow: hidden;padding-left:50px;}
+    .pg-contact-tel-list li {float: left;padding-left:20px;margin-right:70px;font-size:18px;font-weight:600;line-height:30px;border-left:1px solid #3F4454;}
+
+    footer {overflow:hidden;height:80px;line-height:80px;font-size:16px;background:#1C1E27;color:#7F8291;}
+    footer .content {position: relative;box-sizing: border-box;padding: 0 50px;}
+    .beian {position:absolute;right:0;top: 20px;}
+  </style>
+</head>
+
+<body>
+<!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+<!-- SEO -->
+<h1 class="hidden">大秦云</h1>
+<h2 class="hidden">物联网云服务平台,5G,NB-IoT,智能家电物业管理商用租赁新零售工业物联网平台</h2>
+<img style="display:none;" alt="大秦云" src="https://static.czmpv.com/static/office/baidu_search/logo_dq_01.png" />
+<img style="display:none;" alt="大秦云" src="https://static.czmpv.com/static/office/baidu_search/logo_dq_02.png" />
+
+<div class="wrapper">
+
+  <section class="pg-form">
+    <img src="https://static.czmpv.com/static/office/iot/lading_page2/LOGO@2x.png" alt="" class="logo">
+    <h3>设备上云我买单，设备升级我帮你！</h3>
+    <p class="desc">一站式物联网解决方案提供商</p>
+    <form id="Form" class="form">
+      <input type="text" id="formName" name="name" autocomplete="off" placeholder="请输入您的称呼"/>
+      <input type="text" id="formContact" name="contact" autocomplete="off" placeholder="请输入您的联系方式"/>
+      <input type="text" id="formCompany" name="company" autocomplete="off" placeholder="请输入您的公司名称"/>
+      <textarea id="formDemand" name="need" autocomplete="off" placeholder="请输入您的改造需求"></textarea>
+      <div><button class="btn_submit">点击立即上云</button></div>
+    </form>
+    <div class="pg-form-step">
+      <div class="pg-form-step-item">
+        <img src="https://static.czmpv.com/static/office/iot/lading_page/Process-Plan@2x.png" alt="">
+        <div class="item-desc">方案出具</div>
+      </div>
+      <div class="next"><img src="https://static.czmpv.com/static/groupEnjoy/icon_arrow@2x.png" alt=""></div>
+      <div class="pg-form-step-item">
+        <img src="https://static.czmpv.com/static/office/iot/lading_page/Process-contract@2x.png" alt="">
+        <div class="item-desc">合同签订</div>
+      </div>
+      <div class="next"><img src="https://static.czmpv.com/static/groupEnjoy/icon_arrow@2x.png" alt=""></div>
+      <div class="pg-form-step-item">
+        <img src="https://static.czmpv.com/static/office/iot/lading_page/Process-Hardware transformation@2x.png" alt="">
+        <div class="item-desc">硬件改造</div>
+      </div>
+      <div class="next"><img src="https://static.czmpv.com/static/groupEnjoy/icon_arrow@2x.png" alt=""></div>
+      <div class="pg-form-step-item">
+        <img src="https://static.czmpv.com/static/office/iot/lading_page/Process-Platform access@2x.png" alt="">
+        <div class="item-desc">平台接入</div>
+      </div>
+      <div class="next"><img src="https://static.czmpv.com/static/groupEnjoy/icon_arrow@2x.png" alt=""></div>
+      <div class="pg-form-step-item">
+        <img src="https://static.czmpv.com/static/office/iot/lading_page/Process-Project online@2x.png" alt="">
+        <div class="item-desc">项目上线</div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <!--<div class="text">已有<span>354</span>位客户免费上云，免费接入设备达<span>17390</span>台</div>-->
+      <div style="margin-top: 60px;color:#c0c0c0;font-size: 22px;font-weight:600;">
+        工业/民用<span style="font-size: 24px;color:#29cafc;">PLC</span>设备、 <span style="font-size: 24px;color:#29cafc;">MOBUS</span>传感器、<span style="font-size: 24px;color:#29cafc;">RS485/232</span>设备一键上云。支持<span style="font-size: 24px;color:#29cafc;">WiFi、2/3/4G、NBIOT</span>连接。
+      </div>
+    </div>
+  </section>
+
+  <section class="pg-intro-wrapper">
+    <div class="pg-intro">
+      <h3 class="pg-intro__title">平台介绍</h3>
+      <div class="divider"></div>
+      <p class="pg-intro__desc">大秦云IOT(大秦物联网管理云平台),能够帮助客户更轻松、更快捷实现设备连接、控制、监测等。支持百万级并发、低延迟，更高效、更低成本。全方位API支持个性化部署物联网行业应用，助力企业物联网升级与改造。</p>
+      <div class="pg-intro-flow">
+        <div>
+          <img src="https://static.czmpv.com/static/office/iot/icon_equipment@2x.png" style="display:block;width:190px;height:190px;"/>
+          <div>企业设备</div>
+        </div>
+        <img src="https://static.czmpv.com/static/office/iot/line@2x.png" style="display:block;width:100px;height:100px;"/>
+        <div>
+          <img src="https://static.czmpv.com/static/office/iot/icon_dtu@2x.png" style="display:block;width:190px;height:190px;"/>
+          <div>XBY系列DTU</div>
+        </div>
+        <img src="https://static.czmpv.com/static/office/iot/line@2x.png" style="display:block;width:100px;height:100px;"/>
+        <div>
+          <img src="https://static.czmpv.com/static/office/iot/icon_iot@2x.png" style="display:block;width:190px;height:190px;"/>
+          <div>大秦云IoT平台</div>
+        </div>
+        <img src="https://static.czmpv.com/static/office/iot/line@2x.png" style="display:block;width:100px;height:100px;"/>
+        <div>
+          <img src="https://static.czmpv.com/static/office/iot/icon_system@2x.png" style="display:block;width:190px;height:190px;"/>
+          <div>企业业务系统</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pg-product-wrapper">
+    <div class="pg-product">
+      <h3 class="pg-product__title">产品优势</h3>
+      <div class="divider"></div>
+      <ul class="pg-product__advantage">
+        <li class="deep_bg">
+          <img class="pg-product__img" src="https://static.czmpv.com/static/office/iot/lading_page/foot1@2x.png"/>
+          <h4>3分钟接入设备</h4>
+          <p>调研了市面上各种系统，优化交换与流程，设计出全新的设备交换流程，从开机到激活只需要三分钟，无需复杂的硬件编程，流程化控制硬件协议解析。</p>
+        </li>
+        <li>
+          <img class="pg-product__img" src="https://static.czmpv.com/static/office/iot/product_advantage/icon_customize_0@2x.png"/>
+          <h4>支持业务层定制</h4>
+          <p>二次开发平台，可在开发平台上做功能个性化定制、二次开发、对接集成等操作，为企业发展提供源源不断的功能扩展。</p>
+        </li>
+        <li class="deep_bg">
+          <img class="pg-product__img" src="https://static.czmpv.com/static/office/iot/lading_page/foot4@2x.png"/>
+          <h4>支持私有化部署</h4>
+          <p>可私有化部署，可视乎客户网络环境与使用场景做专有规划，无论自建机房还是VPN网络，平台均可支持。</p>
+        </li>
+        <li>
+          <img class="pg-product__img" src="https://static.czmpv.com/static/office/iot/product_advantage/icon_sdk_0@2x.png"/>
+          <h4>自动生成SDK代码</h4>
+          <p>可根据客户实际业务功能自动生成对应的接入sdk，提供详细全面的文档，周到专业的技术支持。</p>
+        </li>
+        <li class="deep_bg">
+          <img class="pg-product__img" src="https://static.czmpv.com/static/office/iot/lading_page/foot3@2x.png"/>
+          <h4>自研动态数据网关</h4>
+          <p>历时2年研究的数据网关，支持主流模块WiFi、蓝牙、GPRS、NB-iot，打通APP、后台、模块之间的通讯通道，支持OTA升级与配置。</p>
+        </li>
+        <li>
+          <img class="pg-product__img" src="https://static.czmpv.com/static/office/iot/product_advantage/icon_programming_0@2x.png"/>
+          <h4>可视化硬件编程</h4>
+          <p>基于图形用户界面的数据可视化开发工具。支持拖拽式的操作，交互式的设计器，帮助用户无门槛零编程地配置硬件逻辑。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pg-device-wrapper">
+    <div class="pg-device">
+      <h3 class="pg-device__title">自研数据网关</h3>
+      <div class="divider"></div>
+      <ul class="device-list">
+        <li style="float: left;background:url(https://static.czmpv.com/static/office/iot/lading_page/bg_left@2x.png) no-repeat left center;background-size: cover;">
+          <img src="https://static.czmpv.com/static/office/iot/lading_page/XBY-D100W@2x.png" alt="">
+          <div class="info">
+            <div class="title">XBY-800系列DTU</div>
+            <div class="min-title">产品特性</div>
+            <div class="item">1.适用于2/3/4g网络环境</div>
+            <div class="item">2.集数据采集与逻辑控制功能于一体</div>
+            <div class="item">3.工业级可靠设计，防尘防水</div>
+          </div>
+        </li>
+        <li style="float: right;background:url(https://static.czmpv.com/static/office/iot/lading_page/xzjh@2x.png) no-repeat left center;background-size: cover;">
+          <img src="https://static.czmpv.com/static/office/iot/lading_page/XBY-D100W@2x.png" alt="">
+          <div class="info">
+            <div class="title">XBY-D100系列DTU</div>
+            <div class="min-title">产品特性</div>
+            <div class="item">1.适用于有线局域网与WIFI网络环境</div>
+            <div class="item"> 2.成本相对低廉</div>
+            <div class="item">3.工业级可靠设计，防尘防水</div>
+          </div>
+        </li>
+      </ul>
+      <h4 class="pg-device__sub_title">XBY全系列数据网关产品特性</h4>
+      <ul class="pg-device-character">
+        <li>
+          <div class="title">XBY-D800</div>
+          <div class="desc" style="padding-top:76px;">
+            <span>4G无线DTU</span>
+            <span>特点：支持4G连接，RS232/485接口</span>
+          </div>
+        </li>
+        <li class="pg-device-deep_bg">
+          <div class="title">XBY-D801</div>
+          <div class="desc" style="padding-top:50px;">
+            <span>4G无线DTU</span>
+            <span>（无线路由版）</span>
+            <span>特点：支持4G连接，自带路由功能，RS232/485接口</span>
+          </div>
+        </li>
+        <li>
+          <div class="title">XBY-D802</div>
+          <div class="desc" style="padding-top:64px;">
+            <span>4G无线DTU</span>
+            <span>（移动扫码支付版）</span>
+            <span>特点：支持4G连接，UART与投币器接口</span>
+          </div>
+        </li>
+        <li class="pg-device-deep_bg">
+          <div class="title">XBY-D602</div>
+          <div class="desc" style="padding-top:42px;">
+            <span>2G无线DTU</span>
+            <span>（移动扫码支付版）</span>
+            <span>特点：支持GPRS/EDGE连接，UART与投币器接口</span>
+          </div>
+        </li>
+        <li>
+          <div class="title">XBY-D100R</div>
+          <div class="desc" style="padding-top:42px;">
+            <span>网络串口DTU</span>
+            <span>（RJ45版）</span>
+            <span>特点：支持有线局域网连接，RS232/485接口</span>
+          </div>
+        </li>
+        <li class="pg-device-deep_bg">
+          <div class="title">XBY-D100W</div>
+          <div class="desc" style="padding-top:42px;">
+            <span>网络串口DTU</span>
+            <span>（WIFI版）</span>
+            <span>特点：支持无线局域网连接，RS232/485接口</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pg-contact-wrapper">
+    <div class="pg-contact">
+      <div>
+        <img class="pg-contact__logo_yugang" src="https://static.czmpv.com/static/office/yugang/foot_logo_yugang@2x.png"/>
+        <p class="pg-contact__desc">轻松上云，智联未来</p>
+        <ul class="pg-contact-menu">
+          <li><a href="https://www.czyugang.com/about.html" target="_blank" class="pg-contact-menu__item-link">关于宇罡</a></li>
+          <li>|</li>
+          <li><a href="https://www.czyugang.com/contact.html" target="_blank" class="pg-contact-menu__item-link">联系我们</a></li>
+          <li>|</li>
+          <li><a href="https://www.lagou.com/gongsi/112275.html" target="_blank" class="pg-contact-menu__item-link">诚聘英才</a></li>
+        </ul>
+      </div>
+      <div class="pg-contact-tel">
+        <h4>总部电话：0768-2500123</h4>
+        <ul class="pg-contact-tel-list">
+          <li>
+            <div>潮州公司</div>
+            <div>0768-2500123</div>
+          </li>
+          <li>
+            <div>广州公司</div>
+            <div>020-38837679</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!--<section class="pg-tool">-->
+    <!--<ul>-->
+      <!--<li class="pg-tool__qq" style="padding: 12px 13px;border-radius:16px 0px 0px 0px;">-->
+        <!--<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=969221509&amp;site=qq&amp;menu=yes" target="_blank" title="点击咨询">-->
+          <!--<img src="https://static.czmpv.com/static/office/iot/floaticon／qq@2x.png" alt="">-->
+        <!--</a>-->
+      <!--</li>-->
+      <!--<li id="scrollTop" style="padding: 12px 13px;border-radius:0px 0px 0px 16px;">-->
+        <!--<img src="https://static.czmpv.com/static/office/iot/floaticon／rocket@2x.png" alt="" style="padding-bottom: 10px;">-->
+        <!--<span>返 回 顶 部</span>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</section>-->
+  <section class="pg-tool" style="height: 150px; overflow: hidden;">
+    <ul>
+      <li id="scrollTop" style="padding: 12px 13px;border-radius:0px 0px 0px 16px;">
+        <img src="https://static.czmpv.com/static/office/iot/floaticon／rocket@2x.png" alt="" style="padding-bottom: 10px;">
+        <span>返 回 顶 部</span>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="content">
+      <p>Copyright &copy;2014-2019 广州大秦信息科技有限公司 ALL Rights Reserved. 粤ICP备19132816号-1</p>
+      <div class="beian">
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+<script src="https://static.czmpv.com/static/js/jquery.min.v1.10.2.js"></script>
+<script src="https://static.czmpv.com/static/js/jquery.scrollto.min.js"></script>
+<script src="./js/jquery.message.min.js" type="text/javascript"></script>
+<script>
+  $('#scrollTop').click(function (e) {
+    $.scrollTo($(('.wrapper')), 200)
+  })
+</script>
+<!--表单-->
+<script>
+  $('#Form').submit(function (e) {
+    e.preventDefault()
+    var name = $('#formName').val()
+    var contact = $('#formContact').val()
+    var company = $('#formCompany').val()
+    var demand = $('#formDemand').val()
+    var source = 'JINRI'
+
+    if (!name) {
+      $.message({message:'请输入您的称呼', type:'error'});
+      return
+    }
+    // 手机号码或者固定电话
+    if(!(/^1[3|4|5|7|8]\d{9}$/.test(contact)) || !/^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(contact)) {
+      $.message({message:'联系方式有误', type:'error'});
+      return
+    }
+    if (!company) {
+      $.message({message:'请输入公司名称', type:'error'});
+      return
+    }
+    if (demand && demand.length > 400) {
+      $.message({message:'改造需求描述输入最多400字', type:'error'});
+      return
+    }
+    // 接口鉴权
+    const URL = '/resident/customer/consultation/log/addItem'
+    $.ajax({
+      url: URL,
+      type: 'post',
+      dataType: 'json',
+      contentType: 'application/json',
+      headers: {
+      },
+      data: JSON.stringify({
+        "company": company,
+        "contact": contact,
+        "demand": demand,
+        "name": name,
+        "source": source
+      }),
+      success: function(data, status) {
+        if (data.code === 200) {
+          $('#formName').val('')
+          $('#formContact').val('')
+          $('#formCompany').val('')
+          $('#formDemand').val('')
+          $.message({message: '申请成功，我们将很快联系您', type:'success'});
+        } else {
+          $.message({message: data.message || '网络较慢，请稍后重试', type:'error'});
+        }
+      }
+    })
+  })
+</script>
+<!--啄木鸟统计-->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//t22.qifeiye.com/";
+    _paq.push(['setTrackerUrl', u+'js/tracker.php']);
+    _paq.push(['setSiteId', '273']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js/tracker.php'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!--百度统计-->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?e739521e602dbfbdcc7c16cf5d9d91e4";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!--百度收录-->
+<script>
+  (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+</body>
+</html>
