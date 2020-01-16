@@ -7,6 +7,14 @@ class BaccController extends Controller {
     const response = await this.ctx.service.bacc.getBacc()
     this.ctx.body = response
   }
+  async getBaccOption() {
+    const response = await this.ctx.service.bacc.getBaccOption()
+    this.ctx.body = response
+  }
+  async addBaccOption() {
+    const response = await this.ctx.service.bacc.addBaccOption()
+    this.ctx.body = response
+  }
 }
 
 module.exports = BaccController;

@@ -45,16 +45,16 @@ module.exports = appInfo => {
     // 是否加载到 agent 上，默认关闭
     agent: false,
     client: { // 配置
-      // host: '193.112.72.172',
+      // host: 'localhost',
       // port: '3306',
       // user: 'root',
-      // password: 'varnew19960101',
+      // password: '19960101',
       // database: 'template'
       host: '193.112.72.172',
       port: '3306',
       user: 'root',
-      password: 'root',
-      database: 'bug'
+      password: '19960101',
+      database: 'bacc'
     }
   }
 

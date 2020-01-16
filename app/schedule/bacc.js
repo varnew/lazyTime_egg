@@ -11,23 +11,43 @@ class Bacc extends Subscription {
 
   // subscribe 是真正定时任务执行时被运行的函数
   async subscribe() {
-    // 获取baccpro列表
-    const res = await this.ctx.service.bacc.getBacc()
-    const list = res.data.data.data.overviewBySymbols
-    let bacc = {}
-    // 找到bacc
-    list.map((item) => {
-      if (item.symbol === 'baccusdt') {
-        bacc = item
+    // 获取当前价格列表
+    const baccRes = await this.ctx.service.bacc.getBacc()
+    const currentList = baccRes.data.data.data.overviewBySymbols
+    // 获取数据库币种买卖配置列表
+    const optionRes = await this.ctx.service.bacc.getBaccOption()
+    const optionList = optionRes.data
+    // 找出需要进行比较的币种,并比较然后组织成文本输出
+    const sendList = []
+    for (let i = 0; i < currentList.length ; i++) {
+      const currentItem = currentList[i]
+      for (let j = 0; j < optionList.length; j++) {
+        const optionItem = optionList[j]
+        if (currentItem.symbol === optionItem.name) {
+          const currentPrice = parseFloat(currentItem.close);
+          const buyPrice = parseFloat(optionItem.buyPrice);
+          const sellPrice = parseFloat(optionItem.sellPrice);
+          let str = '';
+          if (currentPrice <= buyPrice) {
+            str = `可以买入${optionItem.name}, 当前价格${currentItem.close},设置买入价格${buyPrice}个usdt`;
+          }
+          if (currentPrice >= sellPrice) {
+            str = `可以卖出${optionItem.name}, 当前价格${currentItem.close},设置卖出价格${sellPrice}个usdt`;
+            sendList.push(str);
+          }
+        }
       }
-    })
-    // 判断发送条件
-    if (parseFloat(bacc.close) > 0.4500) {
+
+    }
+    // 有消息时发送邮件
+    if (sendList.length > 0) {
       const params = {
         to: '',
-        subject: '价格升高',
-        text: '可以卖出'
+        str: ''
       }
+      sendList.forEach((item) => {
+        params.str += item + ';';
+      })
       this.ctx.service.email.sendEmail(params)
     }
   }

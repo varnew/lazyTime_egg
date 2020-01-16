@@ -22,11 +22,13 @@ class EmailService extends Service {
     var message = {
       from: "<varnew@163.com>", // 发送方邮件地址 <varnew@163.com>
       to: data.to || "861461335@qq.com", // 接受方邮件地址，多个接收方用英文逗号分隔即可 861461335@qq.com
-      subject: data.subject,
-      text: data.text,
+      subject: "通知",
+      text: data.str,
     }
     server.send(message, (err, message) => {
-      console.log(err || message)
+      console.log('----------err')
+      console.log(err)
+      console.log('----------err')
     })
   }
 }
