@@ -14,4 +14,4 @@ RUN npm i
 #CMD ls
 #CMD npm run start
 EXPOSE 7002
-#CMD ["npm run start"]
+CMD ["ls","npm run start"]
