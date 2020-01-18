@@ -13,7 +13,7 @@ class Bacc extends Subscription {
   async subscribe() {
     // 获取当前价格列表
     const baccRes = await this.ctx.service.bacc.getBacc()
-    const currentList = baccRes.data.data.data.overviewBySymbols
+    const currentList = baccRes.overviewBySymbols
     // 获取数据库币种买卖配置列表
     const optionRes = await this.ctx.service.bacc.getBaccOption()
     const optionList = optionRes.data

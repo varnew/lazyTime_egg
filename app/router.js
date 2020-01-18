@@ -19,6 +19,6 @@ module.exports = app => {
   router.get('fundebug', '/fundebug/getErrorByTypeId', controller.fundebug.getErrorByTypeId);
   router.get('fundebug', '/fundebug/counts', controller.fundebug.getCounts);
   router.get('getBaccOption', '/get/bacc/option', controller.bacc.getBaccOption);
-  router.get('bacc', '/bacc', controller.bacc.getBacc);
-  router.post('bacc', '/add/bacc/option', controller.bacc.addBaccOption);
+  router.get('bacc', '/api/bacc', controller.bacc.getBacc);
+  router.post('bacc', '/api/add/bacc/option', controller.bacc.addBaccOption);
 };

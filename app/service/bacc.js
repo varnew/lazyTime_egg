@@ -18,7 +18,7 @@ class BaccService extends Service {
       });
       return {
         code: 200,
-        data,
+        data: data.data.data,
         message: '获取成功'
       }
     } catch (e) {
